@@ -50,8 +50,8 @@ class ChatRoomState extends State<ChatRoom> {
 
     final message = getData.docs
         .map((d) => types.TextMessage(
-            author:
-                types.User(id: d.data()['uid'], firstName: d.data()['name']),
+            author: types.User(
+                id: d.data()['uid'], firstName: d.data()['name']), // 送信者の情報を指定
             createdAt: d.data()['createdAt'],
             id: d.data()['id'],
             text: d.data()['text']))
@@ -71,6 +71,7 @@ class ChatRoomState extends State<ChatRoom> {
           user: _user,
           messages: _messages,
           onSendPressed: _handleSendPressed,
+          showUserAvatars: true,
         ),
       );
 
